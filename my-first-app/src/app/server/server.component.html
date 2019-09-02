@@ -1,4 +1,11 @@
 <p>{{ 'My Server' }} with ID {{ serverID }} is {{ getServerStatus() }}</p>
+
+<button 
+	class="btn btn-primary"
+	[disabled]="!allowNewServer" 
+>Add Server</button>
 <hr />
+
+
 <app-warning-alert></app-warning-alert>
 <app-success-alert></app-success-alert>
