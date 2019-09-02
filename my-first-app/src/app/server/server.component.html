@@ -1,10 +1,21 @@
 <p>{{ 'My Server' }} with ID {{ serverID }} is {{ getServerStatus() }}</p>
 
-<label for="new-server"></label>
-<input 
-  type="text"
-  class="form-control"
-  (input)="onUpdateServerName($event)">
+<p>
+	<label for="event-bind"> Event bind</label>
+	<input
+		id="event-bind"
+    type="text"
+    class="form-control"
+    (input)="onUpdateServerName($event)">
+</p>
+<p>
+	<label for="event-bind-twoway">two way bind</label>
+  <input
+  	id="event-bind-twoway" 
+    type="text"
+    class="form-control"
+    [(ngModel)]="serverName">
+</p>
 
 <p>{{ serverName }}</p>
 <button 

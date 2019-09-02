@@ -9,7 +9,7 @@ export class ServerComponent {
 	serverStatus: string = 'offline';
 	allowNewServer: boolean = false;
 	serverCreationStatus: string = 'No server was created!';
-  serverName = '';
+  serverName = 'TestServer Name';
 
 	constructor() {
 		setTimeout(() => {
