@@ -1,32 +1,34 @@
-<p>{{ 'My Server' }} with ID {{ serverID }} is {{ getServerStatus() }}</p>
+<div class="row">
+  <div class="col-xs-6">
+    <p 
+      [ngStyle]="{backgroundColor: getColor()}"
+      [ngClass]="serverStatus === 'online' ? 'online' : 'offline'"
+      class="status"
+    >
+      {{ 'My Server' }} with ID {{ serverID }} is {{ getServerStatus() }}
+    </p>
+  </div>
+  <div class="col-xs-6">
+    <!-- <button class="btn btn-primary" (click)="showSecret = !showSecret">
+      Display details
+    </button> -->
+    <button class="btn btn-primary" (click)="onToggleDetails()">
+      Display details
+    </button>
+    <p style="height:20px;"><span *ngIf="showSecret">Secret password</span></p>
+  </div>
+</div>
 
-<p>
-	<label for="event-bind"> Event bind</label>
-	<input
-		id="event-bind"
-    type="text"
-    class="form-control"
-    (input)="onUpdateServerName($event)">
-</p>
-<p>
-	<label for="event-bind-twoway">two way bind</label>
-  <input
-  	id="event-bind-twoway" 
-    type="text"
-    class="form-control"
-    [(ngModel)]="serverName">
-</p>
+<div class="row">
+  <div class="col-xs-12">
+      <p 
+      *ngFor="let log of logs; let i = index"
+      [ngStyle]="{backgroundColor: i % 2 == 0 ? 'skyblue' : 'transparent'}"
+      class="status" 
+      >{{ log }}</p>
+  </div>
+</div>
 
-<p>{{ serverName }}</p>
-<button 
-	class="btn btn-primary"
-	[disabled]="!allowNewServer" 
-	(click)="onServerCreate()"
->Add Server</button>
-<hr />
-<p>{{serverCreationStatus}}</p>
-<hr />
-
-<app-warning-alert></app-warning-alert>
+<!-- <app-warning-alert></app-warning-alert>
 <app-success-alert>
-</app-success-alert>
+</app-success-alert> -->

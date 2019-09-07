@@ -1,2 +1,46 @@
 <p>I am in servers component</p>
-<app-server></app-server>
+
+
+<p>
+	<label for="event-bind"> Event bind</label>
+	<input
+		id="event-bind"
+    type="text"
+    class="form-control"
+    (input)="onUpdateServerName($event)">
+</p>
+<p>
+	<label for="event-bind-twoway">two way bind</label>
+  <input
+  	id="event-bind-twoway" 
+    type="text"
+    class="form-control"
+    [(ngModel)]="serverName">
+</p>
+
+<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
+<button 
+	class="btn btn-primary"
+	[disabled]="!allowNewServer" 
+	(click)="onCreateServer()"
+>Add Server</button>
+<hr />
+<p>{{serverCreationStatus}}</p>
+<hr />
+
+<p class="h3">Assignment 2</p>
+<label for="user-name">User name</label>
+<input 
+	id="user-name"
+  type="text" 
+  name="username"
+  [(ngModel)]="username">
+<p>Hello, {{username}}</p>
+<button 
+  [disabled]="username === ''"
+  class="btn btn-default"
+  (click)="username = ''">Reset</button>
+<hr />
+
+
+<app-server *ngFor="let server of servers"></app-server>
